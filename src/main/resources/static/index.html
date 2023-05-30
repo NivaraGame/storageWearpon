@@ -1,14 +1,85 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th = "http://www.thymeleaf.org">
 <head>
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        th ,td {
+            border: 1px solid black;
+            padding: 8px;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+            text-align: center;
+            vertical-align: middle;
+            margin-top:10px;
+        }
+        h1 {
+            display: flex;
+            justify-content: center;
+        }
+        input {
+            width: 100%;
+            border: 1px solid teal;
+            border-radius: 16px;
+            margin-top: 15px;
+            padding: 15px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: grey;
+            justify-content: center;
+        }
+        button {
+            border: 1px solid teal;
+            border-radius: 16px;
+            margin-top: 15px;
+            padding: 15px;
+        }
+    </style>
 </head>
 <body>
-<p>Get your greeting <a href="/greeting">here</a></p>
 <div>
-    <input placeholder="Введіть своє ім'я">
-    <button>Press the button</button>
+    <div class="header">
+        <h1 style="justify-content:center;">Storage of weapon</h1>
+    </div>
+    <div>
+        <input id="Name" type="text" th:value="${Name}" placeholder="Name">
+        <input id="Type" type="text" th:value="${Type}" placeholder="Type">
+        <input id="Description" type="text" th:value="${Description}"  placeholder="Description">
+        <input id="Rarity" type="text" th:value="${Rarity}" placeholder="Rarity">
+        <input id="Damage" type="text" th:value="${Damage}" placeholder="Damage">
+        <input id="Weight" type="text" th:value="${Weight}" placeholder="Weight">
+        <input id="Price" type="text" th:value="${Price}" placeholder="Price">
+        <button onclick="">Add new weapon to list</button>
+        <table>
+            <thread>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Rarity</th>
+                    <th>Damage</th>
+                    <th>Weight</th>
+                    <th>Price</th>
+                </tr>
+            </thread>
+            <tbody>
+            <tr th:each="weapon:${weapons}"/>
+                <td th:text="${weapon.name}"></td>
+                <td th:text="${weapon.type}"></td>
+                <td th:text="${weapon.description}"></td>
+                <td th:text="${weapon.rarity}"></td>
+                <td th:text="${weapon.damage}"></td>
+                <td th:text="${weapon.weight}"></td>
+                <td th:text="${weapon.price}"></td>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>
+
