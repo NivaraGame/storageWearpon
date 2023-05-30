@@ -30,5 +30,4 @@ public class Weapon {
 
     @Column(nullable = false)
     private BigDecimal price;
-
 }
