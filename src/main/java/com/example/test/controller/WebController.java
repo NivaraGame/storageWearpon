@@ -9,15 +9,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
+
 @Controller
 public class WebController {
     @Autowired
     WeaponRepository weaponRepository;
 
-    @GetMapping("/greeting")
-    public String greeting(@RequestParam(name = "name", required = false, defaultValue = "World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "greeting.html";
+    @GetMapping("/")
+    public String getAllWeapon( Model model) {
+        List<Weapon> weaponList = weaponRepository.findAll();
+        model.addAttribute("weapons", weaponList);
+        return "index";
     }
 
 }
