@@ -1,10 +1,14 @@
 package com.example.test.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.math.BigDecimal;
 
 @Entity
+@Getter
+@Setter
 public class Weapon {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
