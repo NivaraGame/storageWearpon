@@ -14,13 +14,15 @@ import java.util.List;
 
 @Controller
 public class WebController {
+
+    @Autowired
     WeaponService weaponService;
 
     @GetMapping("/")
     public String getAllWeapon( Model model) {
         List<Weapon> weaponList = weaponService.listAll();
-//        model.addAttribute("weapons", weaponList);
-        return "index";
+        model.addAttribute("weapons", weaponList);
+        return "index.html";
     }
 
 }
